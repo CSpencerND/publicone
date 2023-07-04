@@ -30,13 +30,16 @@ export function SiteHeader() {
 
     return (
         <>
-            <header className={cn("fixed top-0 z-40 w-full")}>
+            <header
+                className={cn(
+                    "fixed top-0 z-40 w-screen",
+                    !inView ? "border-b bg-background/60 text-foreground backdrop-blur-lg backdrop-saturate-150" : ""
+                )}
+            >
                 <div
                     className={cn(
                         "container flex h-[74px] items-center justify-between space-x-4 text-background transition duration-300 dark:text-foreground",
-                        !inView
-                            ? "border-b bg-background/60 text-foreground backdrop-blur-lg backdrop-saturate-150"
-                            : ""
+                        !inView ? "text-foreground" : ""
                     )}
                 >
                     <div>
@@ -48,8 +51,24 @@ export function SiteHeader() {
                         </Link>
                     </div>
                     <div className="flex gap-4">
+                        <nav
+                            className={cn(
+                                "flex items-center gap-4 pl-8 text-lg text-background transition duration-300 dark:text-foreground max-xl:hidden"
+                            )}
+                        >
+                            {links.map((l, i) => (
+                                <Button
+                                    key={i}
+                                    asChild
+                                    variant="ghost"
+                                    className="text-lg"
+                                >
+                                    <Link href={l.href}>{l.text}</Link>
+                                </Button>
+                            ))}
+                        </nav>
                         <ThemeToggler />
-                        <div className={cn("space-y-4 text-lg", inView ? "hidden" : "")}>
+                        <div className={cn("space-y-4 text-lg xl:hidden", inView ? "hidden" : "")}>
                             <Sheet>
                                 <SheetTrigger asChild>
                                     <Button
@@ -82,12 +101,17 @@ export function SiteHeader() {
                 </div>
                 <nav
                     className={cn(
-                        "menu space-y-4 pl-8 text-lg text-background transition duration-300 dark:text-foreground",
+                        "container menu space-y-4 pl-8 text-lg text-background transition duration-300 dark:text-foreground xl:hidden",
                         !inView ? "hidden" : ""
                     )}
                 >
                     {links.map((l, i) => (
-                        <Link key={i} href={l.href}>{l.text}</Link>
+                        <Link
+                            key={i}
+                            href={l.href}
+                        >
+                            {l.text}
+                        </Link>
                     ))}
                 </nav>
             </header>

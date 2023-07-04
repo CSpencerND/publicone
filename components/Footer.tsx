@@ -2,7 +2,7 @@ import { Map, Phone, Mail } from "lucide-react"
 
 export function Footer() {
     return (
-        <footer className="footer justify-between space-y-6 px-8 pb-12 sm:grid-flow-col [&>*>*]:font-semibold [&>*>*]:text-muted-foreground [&>*]:space-y-2 [&>*]:not-italic">
+        <footer className="container footer justify-between space-y-6 px-8 pb-12 sm:grid-flow-col [&>*>*]:font-semibold [&>*>*]:text-muted-foreground [&>*]:space-y-2 [&>*]:not-italic">
             <address className="prose text-primary [&>*]:no-underline">
                 <a
                     className="flex"

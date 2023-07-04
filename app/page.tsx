@@ -1,11 +1,9 @@
 import { BrandSlider } from "@/components/BrandSlider"
-import { Hero } from "@/components/Hero"
 
 export default function Home() {
     return (
         <>
-            <Hero />
-            <section className="container prose max-w-none">
+            <section className="container prose max-w-none mt-8">
                 <figure>
                     <h2 className="text-foreground">Our Vision</h2>
                     <blockquote className="max-w-prose border-border/60">
