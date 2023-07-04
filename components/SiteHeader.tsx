@@ -64,8 +64,8 @@ export function SiteHeader() {
                                 <SheetContent className="grid border-l-border/40 bg-background/60">
                                     <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
                                     <menu className={cn("menu -mt-[50%] text-lg")}>
-                                        {links.map((l) => (
-                                            <li>
+                                        {links.map((l, i) => (
+                                            <li key={i}>
                                                 <Link
                                                     className="py-3.5"
                                                     href={l.href}
@@ -86,8 +86,8 @@ export function SiteHeader() {
                         !inView ? "hidden" : ""
                     )}
                 >
-                    {links.map((l) => (
-                        <Link href={l.href}>{l.text}</Link>
+                    {links.map((l, i) => (
+                        <Link key={i} href={l.href}>{l.text}</Link>
                     ))}
                 </nav>
             </header>

@@ -40,7 +40,7 @@ export function BrandSlider() {
             >
                 <div className="not-prose flex h-80 scrollbar hover:scrollbar">
                     {brands.map((b, i) => (
-                        <div className="carousel-item h-auto flex-[0_0_80%] last:flex-[0_0_100%] overflow-clip">
+                        <div key={i} className="carousel-item h-auto flex-[0_0_80%] last:flex-[0_0_100%] overflow-clip">
                             <Image
                                 src={b.text}
                                 alt={b.alt}
