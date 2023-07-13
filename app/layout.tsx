@@ -23,7 +23,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 <ThemeProvider attribute="class">
                     <SiteHeader />
                     <Hero />
-                    <main className="space-y-8 container">{children}</main>
+                    <main className="space-y-8 p-0 container">{children}</main>
                     <Separator />
                     <Footer />
                     <TailwindIndicator />
