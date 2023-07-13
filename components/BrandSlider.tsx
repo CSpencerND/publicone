@@ -49,7 +49,9 @@ export function BrandSlider() {
                             <Image
                                 src={b.banner}
                                 alt={b.alt}
-                                className={cn("z-10 h-auto w-full object-cover", i === 0 ? "object-left-top" : "")}
+                                width={450}
+                                height={300}
+                                className={cn("z-10 h-full w-full object-cover", i === 0 ? "object-left-top" : "")}
                             />
                         </div>
                     ))}
