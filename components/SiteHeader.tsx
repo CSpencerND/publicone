@@ -5,10 +5,11 @@ import { Sheet, SheetContent, SheetTitle, SheetTrigger } from "@/components/ui/s
 import { MenuIcon } from "lucide-react"
 import Link from "next/link"
 import { ThemeToggler } from "./theme/ThemeToggler"
+import { Button } from "./ui/button"
 
 import { cn } from "@/lib/utils"
+import { isMobile } from "react-device-detect"
 import { useInView } from "react-intersection-observer"
-import { Button } from "./ui/button"
 
 const links = [
     {
@@ -26,7 +27,7 @@ const links = [
 ]
 
 export function SiteHeader() {
-    const { ref, inView } = useInView({ rootMargin: "74px" })
+    const { ref, inView } = useInView(!isMobile ? { rootMargin: "74px" } : {})
 
     return (
         <>
