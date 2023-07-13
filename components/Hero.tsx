@@ -4,7 +4,7 @@ import hero from "@/assets/PCC-Desktop_Banner.jpg"
 
 export function Hero() {
     return (
-        <section className="container lg:opacity-90 hero relative aspect-video overflow-clip px-0 xl:rounded-b-xl">
+        <section className="container lg:opacity-90 hero relative aspect-video overflow-clip px-0 xl:rounded-b-xl mb-12">
             {/* <div aria-hidden="true" className="hero__overlay" /> */}
             <Image
                 fill

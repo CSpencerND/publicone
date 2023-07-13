@@ -17,11 +17,11 @@ import Image from "next/image"
 import { Button } from "./ui/button"
 
 import { cn } from "@/lib/utils"
-import useEmblaCarousel from "embla-carousel-react"
-import { useCallback } from "react"
+import useEmblaCarousel, { type EmblaCarouselType } from "embla-carousel-react"
+import { useCallback, useEffect, useState } from "react"
 
 export function BrandSlider() {
-    const [emblaRef, emblaApi] = useEmblaCarousel({ align: "start", loop: true })
+    const [emblaRef, emblaApi] = useEmblaCarousel({ align: "start", loop: true, duration: 20 })
 
     const scrollPrev = useCallback(() => {
         if (emblaApi) emblaApi.scrollPrev()
@@ -31,14 +31,29 @@ export function BrandSlider() {
         if (emblaApi) emblaApi.scrollNext()
     }, [emblaApi])
 
+    const [currentSlide, setSlide] = useState<number>(0)
+
+    const onScroll = useCallback((emblaApi: EmblaCarouselType) => {
+        const snap = emblaApi.selectedScrollSnap()
+        setSlide(snap)
+    }, [])
+
+    useEffect(() => {
+        if (!emblaApi) return
+
+        onScroll(emblaApi)
+        emblaApi.on("reInit", onScroll)
+        emblaApi.on("scroll", onScroll)
+    }, [emblaApi, onScroll])
+
     return (
-        <section className="container prose max-w-none">
+        <section className="container prose relative max-w-none">
             <h2 className="text-foreground">Our Brands</h2>
             <div
                 ref={emblaRef}
                 className="relative overflow-hidden rounded-lg shadow-md shadow-black/40 dark:border dark:border-white/60 dark:shadow-none lg:hidden"
             >
-                <menu className="not-prose flex h-80 sm:h-96 md:h-[28rem] scrollbar hover:scrollbar">
+                <menu className="not-prose flex h-80 scrollbar hover:scrollbar sm:h-96 md:h-[28rem]">
                     {brands.map((b, i) => (
                         <li
                             key={i}
@@ -114,6 +129,20 @@ export function BrandSlider() {
                     </li>
                 ))}
             </menu>
+            <div
+                aria-hidden="true"
+                className="absolute bottom-0 left-0 right-0 z-50 mx-auto my-6 w-1/2 rounded-lg bg-zinc-700 p-1 lg:hidden"
+            >
+                <div
+                    className={cn(
+                        "relative w-1/4 rounded-lg bg-zinc-300 py-0.5 transition-all duration-300",
+                        currentSlide === 1 ? "translate-x-full" : "",
+                        currentSlide === 2 ? "translate-x-[200%]" : "",
+                        currentSlide === 3 ? "translate-x-[300%]" : "",
+                        currentSlide === 4 ? "translate-x-[400%]" : ""
+                    )}
+                />
+            </div>
         </section>
     )
 }
