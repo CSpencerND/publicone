@@ -51,7 +51,7 @@ export function BrandSlider() {
             <h2 className="text-foreground">Our Brands</h2>
             <div
                 ref={emblaRef}
-                className="relative overflow-hidden rounded-lg shadow-md shadow-black/40 dark:border dark:border-white/60 dark:shadow-none lg:hidden"
+                className="relative overflow-hidden rounded-lg shadow-md shadow-black/40 ring-1 ring-muted-foreground/20 dark:shadow-none dark:ring-muted-foreground lg:hidden"
             >
                 <menu className="not-prose flex h-80 scrollbar hover:scrollbar sm:h-96 md:h-[28rem]">
                     {brands.map((b, i) => (
@@ -102,7 +102,7 @@ export function BrandSlider() {
                     <li
                         key={i}
                         className={cn(
-                            "brands__item relative m-0 cursor-pointer overflow-clip rounded-lg shadow-md shadow-black/40 dark:shadow-none",
+                            "brands__item relative m-0 cursor-pointer overflow-clip rounded-lg shadow-lg shadow-black/40 ring-1 ring-muted-foreground/20 dark:shadow-none dark:ring-muted-foreground",
                             i === 0 ? "atm" : "",
                             i === 1 ? "dc" : "",
                             i === 2 ? "hc" : "",
@@ -120,7 +120,7 @@ export function BrandSlider() {
                             width={450}
                             height={300}
                             className={cn(
-                                "z-10 m-0 h-full w-full rounded-lg object-cover dark:border dark:border-white/60",
+                                "z-10 m-0 h-full w-full rounded-lg object-cover",
                                 i === 0 ? "object-left-top" : "",
                                 i === 1 ? "object-[45%_center]" : "",
                                 i === 3 ? "max-h-96 w-full object-top" : ""
