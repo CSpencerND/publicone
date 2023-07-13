@@ -16,8 +16,8 @@ import { ChevronLeft, ChevronRight } from "lucide-react"
 import Image from "next/image"
 import { Button } from "./ui/button"
 
-import useEmblaCarousel from "embla-carousel-react"
 import { cn } from "@/lib/utils"
+import useEmblaCarousel from "embla-carousel-react"
 import { useCallback } from "react"
 
 export function BrandSlider() {
@@ -36,11 +36,14 @@ export function BrandSlider() {
             <h2 className="text-foreground">Our Brands</h2>
             <div
                 ref={emblaRef}
-                className="relative overflow-hidden rounded-lg"
+                className="relative overflow-hidden rounded-lg shadow-md shadow-black/40 dark:border dark:border-white/60 dark:shadow-none lg:hidden"
             >
-                <div className="not-prose flex h-80 scrollbar hover:scrollbar">
+                <menu className="not-prose flex h-80 sm:h-96 md:h-[28rem] scrollbar hover:scrollbar">
                     {brands.map((b, i) => (
-                        <div key={i} className="carousel-item h-auto flex-[0_0_80%] last:flex-[0_0_100%] overflow-clip">
+                        <li
+                            key={i}
+                            className="brands__item carousel-item relative h-auto flex-[0_0_80%] cursor-pointer overflow-clip last:flex-[0_0_100%]"
+                        >
                             <Image
                                 src={b.text}
                                 alt={b.alt}
@@ -51,11 +54,15 @@ export function BrandSlider() {
                                 alt={b.alt}
                                 width={450}
                                 height={300}
-                                className={cn("z-10 h-full w-full object-cover", i === 0 ? "object-left-top" : "")}
+                                className={cn(
+                                    "z-10 h-full w-full object-cover",
+                                    i === 0 ? "object-left-top" : "",
+                                    i === 1 ? "object-[45%_center]" : ""
+                                )}
                             />
-                        </div>
+                        </li>
                     ))}
-                </div>
+                </menu>
                 <div className="absolute left-5 right-5 top-1/2 z-10 flex -translate-y-1/2 transform justify-between">
                     <Button
                         size="icon"
@@ -75,6 +82,38 @@ export function BrandSlider() {
                     </Button>
                 </div>
             </div>
+            <menu className="brands__grid grid gap-4 max-lg:hidden">
+                {brands.map((b, i) => (
+                    <li
+                        key={i}
+                        className={cn(
+                            "brands__item relative m-0 cursor-pointer overflow-clip rounded-lg shadow-md shadow-black/40 dark:shadow-none",
+                            i === 0 ? "atm" : "",
+                            i === 1 ? "dc" : "",
+                            i === 2 ? "hc" : "",
+                            i === 3 ? "pb " : ""
+                        )}
+                    >
+                        <Image
+                            src={b.text}
+                            alt={b.alt}
+                            className="absolute z-30 w-1/4 px-4"
+                        />
+                        <Image
+                            src={b.banner}
+                            alt={b.alt}
+                            width={450}
+                            height={300}
+                            className={cn(
+                                "z-10 m-0 h-full w-full rounded-lg object-cover dark:border dark:border-white/60",
+                                i === 0 ? "object-left-top" : "",
+                                i === 1 ? "object-[45%_center]" : "",
+                                i === 3 ? "max-h-96 w-full object-top" : ""
+                            )}
+                        />
+                    </li>
+                ))}
+            </menu>
         </section>
     )
 }

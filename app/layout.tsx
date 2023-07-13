@@ -24,6 +24,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                     <SiteHeader />
                     <Hero />
                     <main className="space-y-8 p-0 container">{children}</main>
+                    {/* <main className="space-y-8 p-0 container min-[1456px]:max-w-[1456px]">{children}</main> */}
                     <Separator />
                     <Footer />
                     <TailwindIndicator />

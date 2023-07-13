@@ -76,3 +76,55 @@
         @apply bg-background text-foreground;
     }
 }
+
+.hero__overlay {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 20;
+    @apply bg-gradient-to-b from-transparent via-transparent to-background;
+}
+
+.brands__grid {
+    grid-template-areas:
+        "atm dc"
+        "atm hc"
+        "pb pb";
+}
+
+.atm {
+    grid-area: atm;
+    max-height: 48rem;
+}
+
+.dc {
+    grid-area: dc;
+    max-height: 24rem;
+}
+
+.hc {
+    grid-area: hc;
+    max-height: 24rem;
+}
+
+.pb {
+    grid-area: pb;
+    max-height: 24rem;
+}
+
+.brands__item::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0);
+    pointer-events: none;
+    transition: background-color 0.3s;
+    z-index: 20;
+    @apply dark:bg-black/[0.15];
+}
+
+.brands__item:hover::before {
+    background-color: rgba(0, 0, 0, 0.15);
+    @apply dark:bg-transparent;
+}

@@ -3,7 +3,7 @@ import { BrandSlider } from "@/components/BrandSlider"
 export default function Home() {
     return (
         <>
-            <section className="container prose max-w-none mt-8">
+            <section className="container prose max-w-none mt-8 lg:hidden">
                 <figure>
                     <h2 className="text-foreground">Our Vision</h2>
                     <blockquote className="max-w-prose border-border/60">
