@@ -46,7 +46,7 @@ export function SiteHeader() {
                     <div>
                         <Link
                             href="/"
-                            className="-mb-2 flex h-auto w-16"
+                            className="flex h-auto w-16"
                         >
                             <PccLogo className="h-auto fill-current" />
                         </Link>
